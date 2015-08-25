@@ -1,0 +1,44 @@
+syntax enable
+set nu
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+
+set t_Co=256
+let g:Powerline_symbols = "fancy"
+
+set laststatus=2
+set encoding=utf-8
+
+" Content will be retained on screen after closed
+set t_ti= t_te=
+
+"==========================================
+"" HotKey Settings
+"==========================================
+"
+"
+
+" remove Arrow key , forced to use  hjkl instead
+" map <Left> <Nop>
+" map <Right> <Nop>
+" map <Up> <Nop>
+" map <Down> <Nop>
+
+" <F2> toggle row number display
+function! HideNumber()
+  if(&relativenumber == &number)
+    set relativenumber! number!
+  elseif(&number)
+    set number!
+  else
+    set relativenumber!
+  endif
+  set number?
+endfunc
+nnoremap <F2> :call HideNumber()<CR>
+
+" 突出显示当前行
+set cursorline
